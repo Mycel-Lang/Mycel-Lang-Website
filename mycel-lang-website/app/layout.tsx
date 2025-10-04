@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "./themes.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import {Metadata} from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

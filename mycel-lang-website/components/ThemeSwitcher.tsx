@@ -2,10 +2,12 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
+import { ThemeToggleButton, useThemeTransition } from "@/components/ui/shadcn-io/theme-toggle-button";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
+  const { startTransition } = useThemeTransition();
 
   // useEffect only runs on the client, so now we can safely show the UI
   React.useEffect(() => {
@@ -17,11 +19,15 @@ export function ThemeSwitcher() {
   }
 
   return (
-    <button
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="font-sans text-sm font-semibold py-2 px-4 rounded-md transition-colors bg-mantle text-humus border border-bedrock hover:bg-crust"
-    >
-        Switch to {theme === "dark" ? "Light" : "Dark"} Theme
-    </button>
+    <ThemeToggleButton
+      theme={theme as "light" | "dark"}
+      variant="circle" // Or "circle-blur" for a slightly different effect
+      start="top-right"
+      onClick={() => {
+        startTransition(() => {
+          setTheme(theme === "dark" ? "light" : "dark");
+        });
+      }}
+    />
   )
 }
