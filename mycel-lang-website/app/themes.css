@@ -1,0 +1,59 @@
+/* /app/themes.css */
+
+:root {
+    /* Font variables are now defined and loaded via next/font in layout.tsx */
+
+    /* Default to Evernia (Light Theme) */
+    /* Tones */
+    --substrate: #FBF9F4;
+    --mantle: #F5F2E9;
+    --crust: #E9E5D9;
+    --humus: #433F38;
+    --loam: #857F72;
+    --bedrock: #D2CCBC;
+    /* Syntax */
+    --mycelium: #4C566A;
+    --amanita: #B45B5B;
+    --hyphae: #5E8D87;
+    --lichen: #7A8754;
+    --spore: #D0A048;
+    --chitin: #C47A4F;
+    --indigo: #8F7C97;
+    --mauve: #A86F7E;
+    /* Semantic */
+    --success: #72A96C;
+    --warning: #DAAD53;
+    --error: #CF5C5C;
+    --info: #58A398;
+}
+
+.dark {
+    /* Mycena (Dark Theme) */
+    /* Tones */
+    --substrate: #191C23;
+    --mantle: #232731;
+    --crust: #3A404E;
+    --humus: #E3E7F0;
+    --loam: #7C849A;
+    --bedrock: #2D323E;
+    /* Syntax */
+    --mycelium: #FFFFFF;
+    --amanita: #F47171;
+    --hyphae: #79E6F3;
+    --lichen: #A2E07B;
+    --spore: #F7D97F;
+    --chitin: #FCA778;
+    --indigo: #C792EA;
+    --mauve: #F087BD;
+    /* Semantic */
+    --success: #82E05A;
+    --warning: #FADE5A;
+    --error: #FA5050;
+    --info: #5AC8FA;
+}
+
+body {
+  background-color: var(--substrate);
+  color: var(--humus);
+  font-family: var(--font-inter);
+}
