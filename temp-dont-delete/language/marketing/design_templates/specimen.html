@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- Switch theme by changing the class to "theme-mycena" or "theme-evernia" -->
+<html lang="en" class="theme-evernia">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Substrate Design Specimen</title>
+    <link rel="stylesheet" href="specimen.css">
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <div class="specimen__container">
+
+        <header class="specimen__header">
+            <h1>Substrate Design System Specimen</h1>
+            <p class="specimen__lede">A canonical document to showcase the <strong>Evernia (Light)</strong> and <strong>Mycena (Dark)</strong> themes, built on the Substrate-22 color system. This document includes typography, code syntax, and common UI components.</p>
+        </header>
+
+        <main>
+            <section class="specimen__section">
+                <h2>Typographic Scale</h2>
+                <p class="specimen__section-desc">Lora is used for headings to provide academic gravity, while Inter is used for body copy for maximum screen readability.</p>
+                <h1>H1: The Quick Brown Fox Jumps Over</h1>
+                <h2>H2: The Quick Brown Fox Jumps Over</h2>
+                <h3>H3: The Quick Brown Fox Jumps Over</h3>
+                <h4>H4: The Quick Brown Fox Jumps Over</h4>
+                <h5>H5: The Quick Brown Fox Jumps Over</h5>
+                <h6>H6: The Quick Brown Fox Jumps Over</h6>
+                <p>This is a standard paragraph (<code>p</code>) using <strong>Humus</strong> for primary text. It contains <strong>bold text</strong>, <em>italic text</em>, <del>strikethrough</del>, <u>underlined text</u>, and <code>inline code</code>. We can also have <sup>superscript</sup> and <sub>subscript</sub> text. A <a href="#">standard link</a> demonstrates the primary accent color.</p>
+                <p class="specimen__secondary-text">This is a secondary paragraph (<code>p.specimen__secondary-text</code>) using <strong>Loam</strong> for less important information, like metadata or timestamps.</p>
+                <blockquote>
+                    <p>This is a blockquote, useful for pulling out important statements. It should be visually distinct from regular paragraph text.</p>
+                    <footer>— A Wise Person</footer>
+                </blockquote>
+            </section>
+
+            <section class="specimen__section">
+                <h2>Syntax Highlighting</h2>
+                <p class="specimen__section-desc">The following code blocks demonstrate the syntax highlighting for various languages.</p>
+
+                <h3>TypeScript</h3>
+                <pre><code class="language-typescript">// A sample of TypeScript syntax highlighting
+import { MycelComponent } from '@mycel/core';
+
+@MycelComponent()
+export class Document {
+    title: string = 'Substrate Specimen';
+    isPublished: boolean = true;
+
+    constructor(version: number) {
+        if (version > 0) {
+            console.log(`Version: ${version}`);
+        }
+    }
+}</code></pre>
+
+                <h3>C</h3>
+                <pre><code class="language-c">#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+
+                <h3>C++</h3>
+                <pre><code class="language-cpp">#include <iostream>
+#include <vector>
+#include <string>
+
+int main() {
+    std::vector<std::string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
+
+    for (const std::string& word : msg) {
+        std::cout << word << " ";
+    }
+    std::cout << std::endl;
+}</code></pre>
+
+                <h3>Rust</h3>
+                <pre><code class="language-rust">fn main() {
+    let mut s = String::from("Hello");
+    s.push_str(", world!");
+    println!("{}", s);
+}</code></pre>
+
+                <h3>React (JSX)</h3>
+                <pre><code class="language-jsx">import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}</code></pre>
+            </section>
+
+            <section class="specimen__section">
+                <h2>LaTeX & Chemical Equations</h2>
+                <p class="specimen__section-desc">Testing the rendering of mathematical and chemical notations using MathJax. This includes inline formulas like $ \ce{H2O} $ and $ E = mc^2 $, as well as display equations.</p>
+
+                <h3>Chemical Reactions</h3>
+                <p>A classic example of a chemical reaction is the combustion of methane:</p>
+                $$ \ce{CH4 + 2 O2 -> CO2 + 2 H2O} $$
+                <p>Here is a more complex reaction involving equilibrium, demonstrating subscripts and reversible reaction arrows:</p>
+                $$ \ce{N2(g) + 3H2(g) <=> 2NH3(g)} $$
+                <p>And a reaction with ions and charges:</p>
+                $$ \ce{Zn(s) + Cu^{2+}(aq) -> Zn^{2+}(aq) + Cu(s)} $$
+
+                <h3>Advanced Mathematical Notations</h3>
+                <p>This section tests more complex mathematical structures, such as Maxwell's Equations, to ensure proper alignment and spacing.</p>
+                <div class="specimen__code-block" style="text-align: center; background: var(--substrate); font-size: 1.1em; padding: 2rem;">
+                    $$ \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0} $$
+                    $$ \nabla \cdot \mathbf{B} = 0 $$
+                    $$ \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t} $$
+                    $$ \nabla \times \mathbf{B} = \mu_0 \left( \mathbf{J} + \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right) $$
+                </div>
+
+                <p style="margin-top: 2rem;">A matrix example to test table-like structures:</p>
+                $$
+                \begin{pmatrix}
+                a & b \\
+                c & d
+                \end{pmatrix}
+                \begin{pmatrix}
+                x \\
+                y
+                \end{pmatrix}
+                = 
+                \begin{pmatrix}
+                1 \\
+                0
+                \end{pmatrix}
+                $$
+
+                <h3>Edge Cases</h3>
+                <p>A very long equation (Taylor series expansion) to test overflow and wrapping behavior within the container:</p>
+                <p style="overflow-x: auto; padding: 1rem; border: 1px solid var(--bedrock);">
+                \[ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots \]
+                </p>
+            </section>
+
+            <section class="specimen__section">
+                <h2>UI Components</h2>
+                <p class="specimen__section-desc">Common UI elements like alerts and buttons, demonstrating the semantic colors.</p>
+                
+                <div class="specimen__component-group">
+                    <h3>Alerts</h3>
+                    <div class="alert alert--info"><strong>Info:</strong> A new version of Mycel is available.</div>
+                    <div class="alert alert--success"><strong>Success:</strong> Your document was saved successfully.</div>
+                    <div class="alert alert--warning"><strong>Warning:</strong> This document has not been saved in over an hour.</div>
+                    <div class="alert alert--error"><strong>Error:</strong> Failed to compile document. See console for details.</div>
+                </div>
+
+                <div class="specimen__component-group">
+                    <h3>Buttons</h3>
+                    <button class="btn btn--primary">Primary Action</button>
+                    <button class="btn btn--secondary">Secondary Action</button>
+                    <button class="btn btn--secondary" disabled>Disabled</button>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="specimen__footer">
+            <button id="theme-switcher" class="btn btn--secondary">Switch Theme</button>
+        </footer>
+
+    </div>
+
+    <script>
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const docElement = document.documentElement;
+        const mycenaTheme = 'theme-mycena';
+        const everniaTheme = 'theme-evernia';
+
+        function setTheme(theme) {
+            if (theme === mycenaTheme) {
+                docElement.classList.remove(everniaTheme);
+                docElement.classList.add(mycenaTheme);
+                themeSwitcher.textContent = 'Switch to Light Theme';
+            } else {
+                docElement.classList.remove(mycenaTheme);
+                docElement.classList.add(everniaTheme);
+                themeSwitcher.textContent = 'Switch to Dark Theme';
+            }
+        }
+
+        themeSwitcher.addEventListener('click', () => {
+            if (docElement.classList.contains(mycenaTheme)) {
+                setTheme(everniaTheme);
+            } else {
+                setTheme(mycenaTheme);
+            }
+        });
+
+        // Set initial button text
+        if (docElement.classList.contains(mycenaTheme)) {
+            themeSwitcher.textContent = 'Switch to Light Theme';
+        } else {
+            themeSwitcher.textContent = 'Switch to Dark Theme';
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>
