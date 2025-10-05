@@ -170,6 +170,28 @@
     body {
         @apply bg-background text-foreground font-sans;
     }
+    
+    /* Aesthetic scrollbar for elements with overflow-y-scroll */
+    .overflow-y-scroll {
+        scrollbar-width: thin; /* Firefox */
+        scrollbar-color: var(--loam) var(--mantle); /* Firefox */
+    }
+
+    /* Webkit (Chrome, Safari, Edge) scrollbar styling */
+    .overflow-y-scroll::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .overflow-y-scroll::-webkit-scrollbar-track {
+        background: var(--mantle);
+        border-radius: 10px;
+    }
+
+    .overflow-y-scroll::-webkit-scrollbar-thumb {
+        background-color: var(--loam);
+        border-radius: 10px;
+        border: 2px solid var(--mantle);
+    }
     h1,h2,h3,h4,h5,h6 {
         font-family: "Merriweather", "serif";
     }
@@ -183,4 +205,87 @@
     .syntax--amanita { color: var(--amanita); }
     .syntax--chitin { color: var(--chitin); }
     .syntax--spore { color: var(--spore); }
+
+    /* Styles for Shiki dual-theme output */
+    .shiki {
+        color: var(--shiki-light);
+        background-color: var(--shiki-light-bg) !important;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--bedrock);
+        overflow-x: auto;
+    }
+    html.dark .shiki {
+        color: var(--shiki-dark);
+        background-color: var(--shiki-dark-bg) !important;
+    }
+    .shiki code {
+        background-color: transparent !important;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.03); opacity: 0.9; }
+    }
+}
+
+/* 6. UI COMPONENT STYLES */
+.specimen__component-group { margin-top: 2rem; }
+.specimen__component-group h3 { margin-bottom: 1rem; }
+
+/* Alerts */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    border: 1px solid;
+    margin-bottom: 1rem;
+}
+.alert--info { background-color: var(--mantle); border-color: var(--info); color: var(--info); }
+.alert--success { background-color: var(--mantle); border-color: var(--success); color: var(--success); }
+.alert--warning { background-color: var(--mantle); border-color: var(--warning); color: var(--warning); }
+.alert--error { background-color: var(--mantle); border-color: var(--error); color: var(--error); }
+.alert strong { color: var(--humus); }
+
+/* Buttons */
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem; /* Slightly larger radius */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transitions for all properties */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.btn--primary {
+    background-color: var(--hyphae);
+    color: var(--substrate);
+}
+.btn--primary:hover {
+    background-color: var(--info); /* Subtle color shift on hover */
+}
+.btn--secondary {
+    background-color: var(--mantle);
+    color: var(--humus);
+    border: 1px solid var(--bedrock);
+}
+.btn--secondary:hover {
+    background-color: var(--crust); /* Subtle background shift on hover */
+    border-color: var(--crust); /* Border color matches background */
+}
+.btn:disabled {
+    cursor: not-allowed;
+    background-color: var(--mantle);
+    color: var(--loam);
+    border-color: var(--bedrock);
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
 }

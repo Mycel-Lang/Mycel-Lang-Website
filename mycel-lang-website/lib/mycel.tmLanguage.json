@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "mycel",
+  "scopeName": "source.mycel",
+  "patterns": [
+    { "include": "#headings" },
+    { "include": "#lists" },
+    { "include": "#blockquote" },
+    { "include": "#directives" },
+    { "include": "#inline" }
+  ],
+  "repository": {
+    "headings": {
+      "name": "markup.heading.mycel",
+      "match": "^(#|##|###|####|#####|######|#1|#2|#3|#4|#5|#6)\\s.*$"
+    },
+    "lists": {
+      "name": "markup.list.mycel",
+      "match": "^\\s*(-|\\*|\\d+\\.|[a-zA-Z]\\.)\\s"
+    },
+    "blockquote": {
+      "name": "markup.quote.mycel",
+      "match": ">\\s"
+    },
+    "directives": {
+      "name": "keyword.control.directive.mycel",
+      "match": "@[a-zA-Z0-9_]+"
+    },
+    "inline": {
+      "patterns": [
+        {
+          "name": "markup.bold.mycel",
+          "match": "\\*[^\\*]+\\*"
+        },
+        {
+          "name": "markup.italic.mycel",
+          "match": "_[^_]+_"
+        },
+        {
+          "name": "comment.line.margin-note.mycel",
+          "match": ">>.*$"
+        },
+        {
+          "name": "entity.name.tag.mycel",
+          "match": "^\\\\S+"
+        }
+      ]
+    }
+  }
+}

@@ -1,116 +1,218 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { AnimateInView } from "@/components/AnimateInView";
+import { LanguageComparisonTable } from "@/components/LanguageComparisonTable";
+import { highlight } from "@/components/SyntaxHighlighter";
+import {
+  Atom,
+  Braces,
+  Code,
+  FileText,
+  GitFork,
+  Globe,
+  Lock,
+  Sparkles,
+  Github,
+  Twitter,
+  MessageSquare,
+} from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+  const comparisonData = {
+    features: [
+      "Basic Formatting",
+      "Footnotes & Citations",
+      "Advanced Lists",
+      "Side Notes (Marginella)",
+      "Transclusion (Linking)",
+    ],
+    rows: await Promise.all([
+      {
+        mycel: highlight("*Bold* & _Italic_", "mycel"),
+        markdown: highlight("**Bold** or __Bold__ & *Italic* or _Italic_", "markdown"),
+        rendered: "<strong>Bold</strong> & <em>Italic</em>",
+      },
+      {
+        mycel: highlight("Text[^1]. And an inline note.^[Note text]", "mycel"),
+        markdown: highlight("Text[^1]. (Inline requires HTML or is unsupported)", "markdown"),
+        rendered: "Text<sup>1</sup>. And an inline note.<sup>2</sup>",
+      },
+      {
+        mycel: highlight("- Item 1 [^a]\n  | Continued text\n- Item 2", "mycel"),
+        markdown: highlight("- Item 1 [^a]\n\n  Continued text is harder\n- Item 2", "markdown"),
+        rendered: "<ul><li>Item 1 <sup><a href='#'>a</a></sup><br/>Continued text</li><li>Item 2</li></ul>",
+      },
+      {
+        mycel: highlight("Main text. >> A note in the margin.", "mycel"),
+        markdown: highlight("(No direct equivalent)", "markdown"),
+        rendered: "<div style='display: flex; justify-content: space-between; align-items: center;'><span>Main text.</span><aside style='opacity: 0.7; font-style: italic;'>A note in the margin.</aside></div>",
+      },
+      {
+        mycel: highlight("See details in [./file#Heading]", "mycel"),
+        markdown: highlight("See details in [file.md#heading-slug](file.md#heading-slug)", "markdown"),
+        rendered: "See details in <a>file#Heading</a>",
+      },
+    ].map(async (row) => ({
+      mycelCodeHtml: await row.mycel,
+      markdownCodeHtml: await row.markdown,
+      renderedOutput: row.rendered,
+    }))),
+  };
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="bg-substrate font-inter text-humus h-screen flex flex-col overflow-hidden">
+      <Header />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      <main className="flex-grow overflow-y-scroll">
+        {/* Hero Section */}
+        <section className="min-h-screen flex items-center bg-mantle border-b border-bedrock w-full relative">
+          <AnimateInView>
+            <div className="max-w-5xl mx-auto px-4 text-center w-full">
+              <h1 className="text-4xl md:text-6xl font-bold font-heading text-mycelium leading-tight mb-4">
+                Mycel: Form is Function.
+              </h1>
+              <p className="text-lg md:text-xl text-loam max-w-3xl mx-auto mb-8">
+                The Markup Language for Serious Documentation. Unambiguous syntax,
+                powerful WASM plugins, and a secure, predictable ecosystem.
+              </p>
+              <div className="flex justify-center gap-4">
+                <Link href="/under-construction" passHref>
+                  <button className="btn btn--primary">Get Started</button>
+                </Link>
+                <Link href="/style-guide" passHref>
+                  <button className="btn btn--secondary">Style Guide</button>
+                </Link>
+              </div>
+            </div>
+          </AnimateInView>
+        </section>
+
+        {/* Feature Highlights Section */}
+        <section className="min-h-screen flex items-center bg-substrate w-full">
+          <AnimateInView>
+            <div className="max-w-5xl mx-auto px-4 py-16 md:py-24 w-full">
+              <h2 className="text-3xl md:text-4xl font-bold font-heading text-center mb-12 text-mycelium">
+                Why Mycel?
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <FeatureCard
+                  icon={<Braces className="size-8 text-hyphae" />}
+                  title="Unambiguous Syntax"
+                  description="A strict, predictable grammar eliminates parsing ambiguities and ensures consistent rendering across all platforms."
+                />
+                <FeatureCard
+                  icon={<Atom className="size-8 text-lichen" />}
+                  title="WASM-Powered Extensibility"
+                  description="Extend Mycel with high-performance, sandboxed functions written in any language that compiles to WebAssembly."
+                />
+                <FeatureCard
+                  icon={<Lock className="size-8 text-amanita" />}
+                  title="Secure by Design"
+                  description="A 'Walled Garden' security model with explicit permissions for network and filesystem access, protecting your projects."
+                />
+                <FeatureCard
+                  icon={<FileText className="size-8 text-indigo" />}
+                  title="Rich Documentation"
+                  description="Native support for complex tables, footnotes, citations, and cross-references, ideal for academic and technical writing."
+                />
+                <FeatureCard
+                  icon={<GitFork className="size-8 text-chitin" />}
+                  title="Single Source of Truth"
+                  description="Include content from other files or specific blocks, ensuring consistency and reducing duplication across your documents."
+                />
+                <FeatureCard
+                  icon={<Sparkles className="size-8 text-spore" />}
+                  title="Elegant Design System"
+                  description="Built on the Substrate Design System, Mycel documents are beautiful, readable, and meticulously crafted."
+                />
+              </div>
+            </div>
+          </AnimateInView>
+        </section>
+
+        {/* Language Overview Section */}
+        <section className="min-h-screen flex items-center bg-mantle border-t border-b border-bedrock w-full">
+          <AnimateInView>
+            <div className="max-w-5xl mx-auto px-4 py-16 md:py-24 w-full">
+              <h2 className="text-3xl md:text-4xl font-bold font-heading text-center mb-12 text-mycelium">
+                Mycel vs. Markdown
+              </h2>
+              <LanguageComparisonTable rows={comparisonData.rows} features={comparisonData.features} />
+            </div>
+          </AnimateInView>
+        </section>
+
+        {/* Call to Action / Community Section */}
+        <section className="min-h-screen flex items-center bg-substrate w-full">
+          <AnimateInView>
+            <div className="max-w-5xl mx-auto px-4 py-16 md:py-24 text-center w-full">
+              <h2 className="text-3xl md:text-4xl font-bold font-heading text-mycelium mb-6">
+                Join the Mycel Guild
+              </h2>
+              <p className="text-lg text-loam max-w-3xl mx-auto mb-8">
+                Become a "leaf admirer" and help shape the future of documentation.
+                Explore our docs, contribute to the project, or join our community.
+              </p>
+              <div className="flex justify-center gap-4">
+                <Link href="/docs" passHref>
+                  <button className="btn btn--primary">Read the Docs</button>
+                </Link>
+                <a
+                  href="https://github.com/mycel-lang"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="btn btn--secondary">GitHub</button>
+                </a>
+              </div>
+            </div>
+          </AnimateInView>
+        </section>
+
+        {/* Footer */}
+        <footer className="min-h-screen flex items-center justify-center bg-mantle border-t border-bedrock py-8 text-center text-loam text-sm">
+          <div className="max-w-5xl mx-auto px-4 w-full">
+            <p className="mb-4">&copy; {new Date().getFullYear()} Mycel Lang. All rights reserved.</p>
+            <div className="flex justify-center gap-6 mt-2">
+              <a href="https://github.com/mycel-lang" target="_blank" rel="noopener noreferrer" title="Mycel Lang GitHub">
+                <Github className="size-6 text-humus hover:text-hyphae transition-all duration-200 transform hover:scale-110 hover:-translate-y-0.5 active:scale-95" />
+              </a>
+              <a href="https://twitter.com/mycel_lang" target="_blank" rel="noopener noreferrer" title="Mycel Lang on Twitter">
+                <Twitter className="size-6 text-humus hover:text-hyphae transition-all duration-200 transform hover:scale-110 hover:-translate-y-0.5 active:scale-95" />
+              </a>
+              <a href="https://discord.gg/mycel-lang" target="_blank" rel="noopener noreferrer" title="Mycel Lang Discord">
+                <MessageSquare className="size-6 text-humus hover:text-hyphae transition-all duration-200 transform hover:scale-110 hover:-translate-y-0.5 active:scale-95" />
+              </a>
+            </div>
+            <div className="flex justify-center gap-4 mt-4">
+                          <Link href="/under-construction" className="hover:underline">
+                            Privacy Policy
+                          </Link>
+                          <Link href="/under-construction" className="hover:underline">
+                            Terms of Service
+                          </Link>            </div>
+          </div>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-          <a
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-            href="/style-guide"
-          >
-            <Image
-              aria-hidden
-              src="/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
-            Style Guide
-          </a>
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
+
+// Helper Component for Feature Cards
+const FeatureCard = ({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) => {
+  return (
+    <div className="bg-crust p-6 rounded-lg border border-bedrock flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out">
+      <div className="mb-4">{icon}</div>
+      <h3 className="text-xl font-semibold text-humus mb-2">{title}</h3>
+      <p className="text-loam">{description}</p>
+    </div>
+  );
+};

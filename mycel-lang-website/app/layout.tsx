@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Merriweather } from "next/font/google";
 import "./globals.css";
 import "./themes.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ExternalLinkProvider } from "@/components/ExternalLinkProvider";
 import {Metadata} from "next";
 
 const geistSans = Geist({
@@ -27,6 +28,12 @@ const jetbrainsMono = JetBrains_Mono({
     weight: ['400']
 })
 
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Mycel Lang",
   description: "The website for the Mycel language.",
@@ -40,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${jetbrainsMono.variable} ${merriweather.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -48,7 +55,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ExternalLinkProvider>{children}</ExternalLinkProvider>
         </ThemeProvider>
       </body>
     </html>

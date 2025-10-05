@@ -42,7 +42,6 @@
 // };
 // export default config;
 // tailwind.config.js
-
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
@@ -116,6 +115,15 @@ module.exports = {
                 sans: ["var(--font-sans)", ...fontFamily.sans],
                 mono: ["var(--font-mono)", ...fontFamily.mono],
                 heading: ["Merriweather", "serif"],
+            },
+            keyframes: {
+                breathe: {
+                    "0%, 100%": { transform: "scale(1)", opacity: "1" },
+                    "50%": { transform: "scale(1.03)", opacity: "0.9" },
+                },
+            },
+            animation: {
+                breathe: "breathe 3s infinite",
             },
         },
     },

@@ -2,12 +2,13 @@
 
 import {useTheme} from "next-themes";
 import Image from "next/image";
-import {ThemeSwitcher} from "@/components/ThemeSwitcher";
-import SyntaxHighlighter, {color_scheme_version} from "@/components/SyntaxHighlighter";
+import {Header} from "@/components/Header";
+import SyntaxHighlighter from "@/components/SyntaxHighlighter";
 import {CurrentThemeLabel} from "@/components/currentThemeName";
 import {JSX} from "react";
 
 // --- Helper Components ---
+const color_scheme_version = "0.0.2";
 
 const Section = ({icon, title, description, children}: {
     icon: React.ReactNode;
@@ -82,7 +83,7 @@ const ComponentIcon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0
 
 // --- Main Page Component ---
 
-export default function StyleGuidePage() {
+export default async function StyleGuidePage() {
     const {theme} = useTheme();
 
     const tones = {
@@ -148,22 +149,10 @@ export default function StyleGuidePage() {
     const currentSemantic = theme === 'dark' ? semanticColors.dark : semanticColors.light;
 
     return (
-        <div className="bg-substrate font-inter">
-            <header className="sticky top-0 z-10 bg-substrate/80 backdrop-blur-md border-b border-bedrock">
-                <div className="max-w-5xl mx-auto p-4 flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                        <Image src="/logo.svg" alt="Mycel Logo" width={32} height={32} className="dark:block hidden"/>
-                        <Image src="/logo-dark.svg" alt="Mycel Logo" width={32} height={32}
-                               className="dark:hidden block"/>
-                        <h1 className=" text-xl font-bold text-humus">
-                            Substrate Design System
-                        </h1>
-                    </div>
-                    <ThemeSwitcher/>
-                </div>
-            </header>
+        <div className="bg-substrate font-inter h-screen flex flex-col overflow-hidden">
+            <Header/>
 
-            <main className="px-4">
+            <main className="flex-grow overflow-y-scroll px-4">
                 <div className="text-center py-20 md:py-28 border-b border-bedrock bg-mantle">
                     <div className="max-w-3xl mx-auto">
                         <h1 className=" text-4xl md:text-5xl font-bold text-mycelium">Form is Function</h1>
