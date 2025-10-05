@@ -3,17 +3,6 @@
 import {createHighlighter, type BundledLanguage} from 'shiki';
 import mycelGrammar from '@/lib/mycel.tmLanguage.json';
 
-const lightTheme = {
-    name: 'evernia',
-    settings: [
-        {
-            scope: ['comment']
-
-        }
-
-    ]
-}
-
 
 
 const highlighterPromise = createHighlighter({

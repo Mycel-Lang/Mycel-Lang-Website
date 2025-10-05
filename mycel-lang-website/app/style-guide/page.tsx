@@ -5,7 +5,7 @@ import Image from "next/image";
 import {Header} from "@/components/Header";
 import SyntaxHighlighter from "@/components/SyntaxHighlighter";
 import {CurrentThemeLabel} from "@/components/currentThemeName";
-import {JSX} from "react";
+import {JSX, useEffect, useState} from "react";
 
 // --- Helper Components ---
 const color_scheme_version = "0.0.2";
@@ -83,8 +83,14 @@ const ComponentIcon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0
 
 // --- Main Page Component ---
 
-export default async function StyleGuidePage() {
-    const {theme} = useTheme();
+export default function StyleGuidePage() {
+    const { theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => { setMounted(true); }, []);
+
+    // until mounted, avoid using theme to prevent hydration mismatch
+    const effectiveTheme = mounted ? theme : "light";
 
     const tones = {
         light: [
@@ -289,14 +295,14 @@ export default async function StyleGuidePage() {
                     </div>
                 </Section>
 
-                <Section
-                    icon={<ComponentIcon/>}
-                    title="Code Blocks"
-                    description="Code is rendered using JetBrains Mono and the dedicated syntax color palette to ensure clarity and readability."
-                >
-                    <SyntaxHighlighter language="typescript"
-                                       code={`@MycelComponent()\nexport class Document {\n  title: string = 'Substrate Specimen';\n  isPublished: boolean = true;\n\n  constructor(version: number) {\n    // A comment explaining the logic\n    if (version > 0) {\n      console.log(\`Version: ${color_scheme_version}\`);\n    }\n  }\n`}/>
-                </Section>
+                {/*<Section*/}
+                {/*    icon={<ComponentIcon/>}*/}
+                {/*    title="Code Blocks"*/}
+                {/*    description="Code is rendered using JetBrains Mono and the dedicated syntax color palette to ensure clarity and readability."*/}
+                {/*>*/}
+                {/*    /!*<SyntaxHighlighter language="typescript"*!/*/}
+                {/*    /!*                   code={`@MycelComponent()\nexport class Document {\n  title: string = 'Substrate Specimen';\n  isPublished: boolean = true;\n\n  constructor(version: number) {\n    // A comment explaining the logic\n    if (version > 0) {\n      console.log(\`Version: ${color_scheme_version}\`);\n    }\n  }\n`}/>*!/*/}
+                {/*</Section>*/}
             </main>
         </div>
     );
