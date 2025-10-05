@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import {Header} from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { LanguageComparisonTable } from "@/components/LanguageComparisonTable";
 import {highlight} from "@/components/SyntaxHighlighter";
@@ -65,7 +64,6 @@ export default async function Home() {
     };
     return (
         <div className="bg-substrate font-inter text-humus h-screen flex flex-col overflow-hidden">
-            <Header/>
 
             <main className="flex-grow overflow-y-scroll">
         {/* Hero Section */}

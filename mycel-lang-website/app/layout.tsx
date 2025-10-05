@@ -4,6 +4,7 @@ import "./globals.css";
 import "./themes.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ExternalLinkProvider } from "@/components/ExternalLinkProvider";
+import { Header } from "@/components/Header";
 import {Metadata} from "next";
 
 const geistSans = Geist({
@@ -55,7 +56,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ExternalLinkProvider>{children}</ExternalLinkProvider>
+          <ExternalLinkProvider>
+            <Header />
+            {children}
+          </ExternalLinkProvider>
         </ThemeProvider>
       </body>
     </html>

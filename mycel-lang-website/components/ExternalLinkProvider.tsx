@@ -2,6 +2,7 @@
 
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {ArrowUpRight, AlertTriangle} from 'lucide-react';
+import {ModalOverlay} from "@/components/ui/ModalOverlay";
 
 // The Modal UI Component
 const ExternalLinkModal = ({
@@ -18,37 +19,33 @@ const ExternalLinkModal = ({
     if (!isOpen) return null;
 
     return (
-        <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-substrate/80 backdrop-blur-sm animate-in fade-in-50"
-            onClick={onClose}
-        >
-            <div className="bg-substrate">
-                <div
-                    onClick={(e) => e.stopPropagation()}
-                    className="relative bg-mantle border border-bedrock rounded-lg shadow-xl w-full max-w-md m-4 p-6 animate-in zoom-in-95 duration-300"
-                >
-                    <div className="flex items-start gap-4">
-                        <div
-                            className="size-12 flex-shrink-0 rounded-full bg-crust flex items-center justify-center border border-bedrock">
-                            <AlertTriangle className="size-6 text-warning"/>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold text-humus">External Link</h3>
-                            <p className="text-sm text-loam mt-1">
-                                You are about to navigate to a third-party website. Do you want to proceed?
-                            </p>
-                            <p className="text-xs text-indigo font-mono mt-2 truncate bg-crust p-2 rounded">
-                                {href}
-                            </p>
-                        </div>
+        <ModalOverlay isOpen={isOpen} onClose={onClose}>
+            <div
+                onClick={(e) => e.stopPropagation()}
+                className="relative bg-mantle border border-bedrock rounded-lg shadow-xl w-full max-w-md m-4 p-6 animate-in zoom-in-95 duration-300"
+            >
+                <div className="flex items-start gap-4">
+                    <div
+                        className="size-12 flex-shrink-0 rounded-full bg-crust flex items-center justify-center border border-bedrock">
+                        <AlertTriangle className="size-6 text-warning"/>
                     </div>
-                    <div className="flex justify-end gap-3 mt-6">
-                        <button onClick={onClose} className="btn btn--secondary">Cancel</button>
-                        <button onClick={onConfirm} className="btn btn--primary">Proceed</button>
+                    <div>
+                        <h3 className="text-lg font-semibold text-humus">External Link</h3>
+                        <p className="text-sm text-loam mt-1">
+                            You are about to navigate to a third-party website. Do you want to proceed?
+                        </p>
+                        <p className="text-xs text-indigo font-mono mt-2 truncate bg-crust p-2 rounded">
+                            {href}
+                        </p>
                     </div>
                 </div>
+                <div className="flex justify-end gap-3 mt-6">
+                    <button onClick={onClose} className="btn btn--secondary">Cancel</button>
+                    <button onClick={onConfirm} className="btn btn--primary">Proceed</button>
+                </div>
             </div>
-        </div>
+        </ModalOverlay>
+
     );
 };
 
