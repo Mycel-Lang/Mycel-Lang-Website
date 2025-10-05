@@ -80,7 +80,7 @@ const ComponentIcon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0
 
 export default function StyleGuidePage() {
     const { theme } = useTheme();
-    const [setMounted] = useState(false);
+    const [, setMounted] = useState(false);
 
     useEffect(() => { setMounted(true); }, []);
 
@@ -155,7 +155,7 @@ export default function StyleGuidePage() {
                         <h1 className=" text-4xl md:text-5xl font-bold text-mycelium">Form is Function</h1>
                         <p className="text-loam mt-4 text-lg leading-relaxed">
                             An intelligent, structured, and opinionated design language. Every element is meticulously
-                            crafted to serve our <strong className="text-humus">"leaf admirer"</strong> audience who
+                            crafted to serve our <strong className="text-humus">&quotleaf admirer&quot</strong> audience who
                             appreciates depth and intentionality.
                         </p>
                     </div>
