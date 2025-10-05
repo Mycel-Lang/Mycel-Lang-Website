@@ -1,23 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeroSection } from "@/components/HeroSection";
-import { LanguageComparisonTable } from "@/components/LanguageComparisonTable";
+import {HeroSection} from "@/components/HeroSection";
+import {LanguageComparisonTable} from "@/components/LanguageComparisonTable";
 import {highlight} from "@/components/SyntaxHighlighter";
 import {
     Atom,
     Braces,
-    Code,
     FileText,
     GitFork,
-    Globe,
     Lock,
     Sparkles,
-    Github,
-    Twitter,
-    MessageSquare,
-    Youtube,
-    Twitch,
-    LucideBadgeX,
+
 } from "lucide-react";
 import {AnimateInView} from "@/components/AnimateInView";
 
@@ -66,8 +59,8 @@ export default async function Home() {
         <div className="bg-substrate font-inter text-humus h-screen flex flex-col overflow-hidden">
 
             <main className="flex-grow overflow-y-scroll">
-        {/* Hero Section */}
-        <HeroSection />
+                {/* Hero Section */}
+                <HeroSection/>
 
                 {/* Feature Highlights Section */}
                 <section className="min-h-screen flex items-center bg-substrate w-full">
@@ -132,7 +125,7 @@ export default async function Home() {
                                 Join the Garden
                             </h2>
                             <p className="text-lg text-loam max-w-3xl mx-auto mb-8">
-                                Become a "leaf admirer" and help shape the future of documentation.
+                                Become a &quotleaf admirer&quot and help shape the future of documentation.
                                 Explore our docs, contribute to the project, or join our community.
                             </p>
                             <div className="flex justify-center gap-4">
@@ -158,8 +151,10 @@ export default async function Home() {
                             {/* Column 1: Brand */}
                             <div className="flex flex-col items-center md:items-start space-y-4">
                                 <Link href="/" className="flex items-center gap-3 group">
-                                    <Image src="/logo.svg" alt="Mycel Logo" width={28} height={28} className="dark:block hidden"/>
-                                    <Image src="/logo-dark.svg" alt="Mycel Logo" width={28} height={28} className="dark:hidden block"/>
+                                    <Image src="/logo.svg" alt="Mycel Logo" width={28} height={28}
+                                           className="dark:block hidden"/>
+                                    <Image src="/logo-dark.svg" alt="Mycel Logo" width={28} height={28}
+                                           className="dark:hidden block"/>
                                     <span className="text-lg font-bold text-humus">Mycel Lang</span>
                                 </Link>
                                 <p className="text-xs max-w-xs">
@@ -171,10 +166,14 @@ export default async function Home() {
                             <div>
                                 <h3 className="font-semibold text-humus mb-4">Navigate</h3>
                                 <ul className="space-y-2">
-                                    <li><Link href="/docs" className="hover:text-hyphae hover:underline">Docs</Link></li>
-                                    <li><Link href="/style-guide" className="hover:text-hyphae hover:underline">Style Guide</Link></li>
-                                    <li><Link href="/features" className="hover:text-hyphae hover:underline">Features</Link></li>
-                                    <li><Link href="/blog" className="hover:text-hyphae hover:underline">Blog</Link></li>
+                                    <li><Link href="/docs" className="hover:text-hyphae hover:underline">Docs</Link>
+                                    </li>
+                                    <li><Link href="/style-guide" className="hover:text-hyphae hover:underline">Style
+                                        Guide</Link></li>
+                                    <li><Link href="/features"
+                                              className="hover:text-hyphae hover:underline">Features</Link></li>
+                                    <li><Link href="/blog" className="hover:text-hyphae hover:underline">Blog</Link>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -182,8 +181,11 @@ export default async function Home() {
                             <div>
                                 <h3 className="font-semibold text-humus mb-4">Community</h3>
                                 <ul className="space-y-2">
-                                    <li><a href="https://github.com/mycel-lang" target="_blank" rel="noopener noreferrer" className="hover:text-hyphae hover:underline">GitHub</a></li>
-                                    <li><a href="https://x.com/MycelLang" target="_blank" rel="noopener noreferrer" className="hover:text-hyphae hover:underline">X / Twitter</a></li>
+                                    <li><a href="https://github.com/mycel-lang" target="_blank"
+                                           rel="noopener noreferrer"
+                                           className="hover:text-hyphae hover:underline">GitHub</a></li>
+                                    <li><a href="https://x.com/MycelLang" target="_blank" rel="noopener noreferrer"
+                                           className="hover:text-hyphae hover:underline">X / Twitter</a></li>
                                 </ul>
                             </div>
 
@@ -191,20 +193,31 @@ export default async function Home() {
                             <div>
                                 <h3 className="font-semibold text-humus mb-4">Author</h3>
                                 <ul className="space-y-2">
-                                    <li><a href="https://github.com/ImTheShrub" target="_blank" rel="noopener noreferrer" className="hover:text-hyphae hover:underline">GitHub</a></li>
-                                    <li><a href="https://x.com/ImTheShrub" target="_blank" rel="noopener noreferrer" className="hover:text-hyphae hover:underline">X / Twitter</a></li>
-                                    <li><a href="https://www.youtube.com/@ImTheShrub" target="_blank" rel="noopener noreferrer" className="hover:text-hyphae hover:underline">YouTube</a></li>
-                                    <li><a href="https://www.twitch.tv/imtheshrublive" target="_blank" rel="noopener noreferrer" className="hover:text-hyphae hover:underline">Twitch</a></li>
+                                    <li><a href="https://github.com/ImTheShrub" target="_blank"
+                                           rel="noopener noreferrer"
+                                           className="hover:text-hyphae hover:underline">GitHub</a></li>
+                                    <li><a href="https://x.com/ImTheShrub" target="_blank" rel="noopener noreferrer"
+                                           className="hover:text-hyphae hover:underline">X / Twitter</a></li>
+                                    <li><a href="https://www.youtube.com/@ImTheShrub" target="_blank"
+                                           rel="noopener noreferrer"
+                                           className="hover:text-hyphae hover:underline">YouTube</a></li>
+                                    <li><a href="https://www.twitch.tv/imtheshrublive" target="_blank"
+                                           rel="noopener noreferrer"
+                                           className="hover:text-hyphae hover:underline">Twitch</a></li>
                                 </ul>
                             </div>
                         </div>
 
                         {/* Sub-footer */}
-                        <div className="mt-12 pt-8 border-t border-bedrock flex flex-col sm:flex-row justify-between items-center">
-                            <p className="text-xs">&copy; {new Date().getFullYear()} Mycel Lang. All rights reserved.</p>
+                        <div
+                            className="mt-12 pt-8 border-t border-bedrock flex flex-col sm:flex-row justify-between items-center">
+                            <p className="text-xs">&copy; {new Date().getFullYear()} Mycel Lang. All rights
+                                reserved.</p>
                             <div className="flex gap-4 mt-4 sm:mt-0">
-                                <Link href="/under-construction" className="text-xs hover:underline">Privacy Policy</Link>
-                                <Link href="/under-construction" className="text-xs hover:underline">Terms of Service</Link>
+                                <Link href="/under-construction" className="text-xs hover:underline">Privacy
+                                    Policy</Link>
+                                <Link href="/under-construction" className="text-xs hover:underline">Terms of
+                                    Service</Link>
                             </div>
                         </div>
                     </div>

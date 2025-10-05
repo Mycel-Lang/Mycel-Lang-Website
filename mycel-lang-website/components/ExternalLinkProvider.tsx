@@ -1,7 +1,7 @@
 'use client';
 
-import React, {useState, useEffect, useCallback, useRef} from 'react';
-import {ArrowUpRight, AlertTriangle} from 'lucide-react';
+import React, {useState, useEffect, useCallback} from 'react';
+import {AlertTriangle} from 'lucide-react';
 import {ModalOverlay} from "@/components/ui/ModalOverlay";
 
 // The Modal UI Component

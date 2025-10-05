@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Wrench, Construction } from 'lucide-react';
+import { Construction } from 'lucide-react';
 
 export default function UnderConstruction() {
   return (
@@ -7,7 +7,7 @@ export default function UnderConstruction() {
       <Construction className="size-24 md:size-32 text-mycelium mb-4 animate-pulse" />
       <h1 className="text-4xl md:text-6xl font-bold font-heading text-mycelium mb-4">Page Under Construction</h1>
       <p className="text-lg text-loam max-w-xl mx-auto mb-8">
-        We're diligently working on building this section. Please check back soon for updates!
+        We&aposre diligently working on building this section. Please check back soon for updates!
       </p>
       <Link href="/" passHref>
         <button className="btn btn--primary">Go to Homepage</button>

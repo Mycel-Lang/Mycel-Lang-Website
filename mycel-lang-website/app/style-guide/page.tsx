@@ -1,14 +1,9 @@
 "use client";
 
 import {useTheme} from "next-themes";
-import Image from "next/image";
-import {Header} from "@/components/Header";
-import SyntaxHighlighter from "@/components/SyntaxHighlighter";
-import {CurrentThemeLabel} from "@/components/currentThemeName";
 import {JSX, useEffect, useState} from "react";
 
 // --- Helper Components ---
-const color_scheme_version = "0.0.2";
 
 const Section = ({icon, title, description, children}: {
     icon: React.ReactNode;
@@ -85,12 +80,10 @@ const ComponentIcon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0
 
 export default function StyleGuidePage() {
     const { theme } = useTheme();
-    const [mounted, setMounted] = useState(false);
+    const [setMounted] = useState(false);
 
     useEffect(() => { setMounted(true); }, []);
 
-    // until mounted, avoid using theme to prevent hydration mismatch
-    const effectiveTheme = mounted ? theme : "light";
 
     const tones = {
         light: [
@@ -149,14 +142,12 @@ export default function StyleGuidePage() {
         ],
     };
 
-    const currentThemeName = theme === 'dark' ? 'Mycena (Dark)' : 'Evernia (Light)';
     const currentTones = theme === 'dark' ? tones.dark : tones.light;
     const currentSyntax = theme === 'dark' ? syntaxColors.dark : syntaxColors.light;
     const currentSemantic = theme === 'dark' ? semanticColors.dark : semanticColors.light;
 
     return (
         <div className="bg-substrate font-inter h-screen flex flex-col overflow-hidden">
-            <Header/>
 
             <main className="flex-grow overflow-y-scroll px-4">
                 <div className="text-center py-20 md:py-28 border-b border-bedrock bg-mantle">
