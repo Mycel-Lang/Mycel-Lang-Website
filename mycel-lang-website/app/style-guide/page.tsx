@@ -149,7 +149,7 @@ export default function StyleGuidePage() {
     return (
         <div className="bg-substrate font-inter h-screen flex flex-col overflow-hidden">
 
-            <main className="flex-grow overflow-y-scroll px-4">
+            <main className="flex-grow overflow-y-scroll px-4 ">
                 <div className="text-center py-20 md:py-28 border-b border-bedrock bg-mantle">
                     <div className="max-w-3xl mx-auto">
                         <h1 className=" text-4xl md:text-5xl font-bold text-mycelium">Form is Function</h1>
